@@ -29,4 +29,3 @@ class FileStorage:
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r') as file:
                 obj_dict = json.load(file)
-                print(obj_dict)
