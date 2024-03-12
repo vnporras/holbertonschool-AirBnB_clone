@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
 """ File Storage Module """
+
 import json
 import os
-
 
 class FileStorage:
     __file_path = "file.json"
@@ -29,6 +29,4 @@ class FileStorage:
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r') as file:
                 obj_dict = json.load(file)
-                for key, obj_data in obj_dict.items():
-                    class_name, obj_id = key.split('.')
-                    self.__objects[key] = globals()[class_name](**obj_data)
+                print(obj_dict)
