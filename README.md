@@ -1,1 +1,1 @@
-# Holbertonschool AirBnB Clone
+# Holberton School AirBnB Clone
