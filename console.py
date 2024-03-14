@@ -21,9 +21,9 @@ class HBNBCommand(cmd.Cmd):
         """Exit the console"""
         sys.exit()
 
-    def emptyLine(self, arg):
-        """Print empty line"""
+    def emptyline(self):
         pass
+        
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
