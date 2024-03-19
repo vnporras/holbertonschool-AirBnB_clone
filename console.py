@@ -98,8 +98,10 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances based or not on the class name"""
        
         try:
-            class_name = arg
-            eval(class_name)
+            if arg:
+                class_name = arg
+                eval(class_name[0])
+
             objects = storage.all()
             print([str(obj) for obj in objects.values()])
         except NameError:
@@ -115,7 +117,7 @@ class HBNBCommand(cmd.Cmd):
             # params = [clase name, instance id, attribute name, attribute value]
             params = arg.split()
             eval(params[0])
-            
+
             if len(params) < 2:
                 print("** instance id missing **")
                 return
@@ -152,7 +154,8 @@ class HBNBCommand(cmd.Cmd):
                         new_value = int(current_value)
                                        
                     objects[object_key_to_update].update({params[2]: new_value})
-                    file.close()    
+                    storage.save()
+                    file.close()
                 
                 with open(self.__file_path, "w", encoding="utf-8") as file:
                     json.dump(objects, file)
