@@ -151,9 +151,11 @@ class HBNBCommand(cmd.Cmd):
 
                     if type(new_value) is not str and type(new_value) is not float:
                         new_value = int(current_value)
-                                       
-                    objects[object_key_to_update].update({params[2]: new_value})
-                    storage.save()
+
+                    for key, value in storage.all().items():
+                        if key == object_key_to_update:
+                            value.__dict__[params[2]] = new_value
+                            storage.save()
                     file.close()
                 
                 with open(self.__file_path, "w", encoding="utf-8") as file:
