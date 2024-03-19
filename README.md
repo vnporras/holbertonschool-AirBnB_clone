@@ -1,4 +1,4 @@
-# Holberton School AirBnB Clone
+# Holberton School AirBnB Clone 🏘️ 🏖️
 
 This command line interface is designed to manage AirBnB objects as part of the first step towards building a full web application: the AirBnB clone. This initial step lays the foundation for subsequent projects, including HTML/CSS templating, database storage, API integration, and front-end development.
 
