@@ -46,11 +46,11 @@ class HBNBCommand(cmd.Cmd):
             id_class = class_name_and_id[1]
 
             try:
-                object = storage.all()
-                print(object[f"{class_name_and_id[0]}.{id_class}"])
+                objects = storage.all()
+                print(objects[f"{class_name_and_id[0]}.{id_class}"])
 
-            except FileNotFoundError:
-                print("** class doesn't exist **")
+            except KeyError:
+                print("** no instance found **")
         except NameError:
             print("** class doesn't exist **")
 
