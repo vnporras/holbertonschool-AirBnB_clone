@@ -24,6 +24,7 @@ class FileStorage:
 
         with open(self.__file_path, "w", encoding="utf-8") as file:
             json.dump(objs, file)
+            file.close()
 
     def reload(self):
         from ..base_model import BaseModel
@@ -32,5 +33,6 @@ class FileStorage:
                 for key, value in json.load(file).items():
                     obj = eval(value["__class__"])(**value)
                     self.__objects[key] = obj
+                    file.close()
         except FileNotFoundError:
             pass
