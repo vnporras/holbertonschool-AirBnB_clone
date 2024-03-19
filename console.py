@@ -46,19 +46,9 @@ class HBNBCommand(cmd.Cmd):
             id_class = class_name_and_id[1]
 
             try:
-                with open(self.__file_path, "r", encoding="utf-8") as file:                
-                    object_string = None
-                    for key, value in json.load(file).items():
-                        if key == f"{class_name_and_id[0]}.{id_class}":
-                            object_string = value
+                object = storage.all()
+                print(object[f"{class_name_and_id[0]}.{id_class}"])
 
-                    if object_string == None:
-                        print("** no instance found **")
-                        file.close()
-                        return
-
-                    print(f"{[class_name_and_id[0]]} ({id_class}) {object_string}")
-                    file.close()
             except FileNotFoundError:
                 print("** class doesn't exist **")
         except NameError:
