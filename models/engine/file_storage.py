@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-
 """ File Storage Module """
-
 import json
 
 class FileStorage:
@@ -28,6 +26,13 @@ class FileStorage:
 
     def reload(self):
         from ..base_model import BaseModel
+        from ..user import User
+        from ..state import State
+        from ..city import City
+        from ..amenity import Amenity
+        from ..place import Place
+        from ..review import Review
+
         try:
             with open(self.__file_path, "r", encoding="utf-8") as file:
                 for key, value in json.load(file).items():

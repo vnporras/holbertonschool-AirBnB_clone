@@ -9,7 +9,12 @@ import json
 from models.base_model import BaseModel
 from models import storage
 from datetime import datetime
-
+""" from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review """
 
 class HBNBCommand(cmd.Cmd):
     """ Simple command processor example. """
@@ -62,28 +67,29 @@ class HBNBCommand(cmd.Cmd):
    
         try:
             class_name_and_id = arg.split()
+            eval(class_name_and_id[0])
             if len(class_name_and_id) != 2:
                 print("** instance id missing **")
                 return
-
-            try:
-                with open(self.__file_path, "r", encoding="utf-8") as file:
-                    objects = json.load(file)
-                    object_key_to_remove = f"{class_name_and_id[0]}.{class_name_and_id[1]}"
-                    
-                    if object_key_to_remove not in objects:
-                        print("** no instance found **")
-                        file.close()
-                        return 
-                                       
-                    del objects[object_key_to_remove]                
-                    file.close()    
+            
+            with open(self.__file_path, "r", encoding="utf-8") as file:
+                objects = json.load(file)
+                object_key_to_remove = f"{class_name_and_id[0]}.{class_name_and_id[1]}"
                 
-                with open(self.__file_path, "w", encoding="utf-8") as file:
-                    json.dump(objects, file)
+                if object_key_to_remove not in objects:
+                    print("** no instance found **")
                     file.close()
-            except FileNotFoundError:
-                print("** no instance found **")
+                    return 
+
+                                       
+                del objects[object_key_to_remove]
+                file.close()    
+                
+            with open(self.__file_path, "w", encoding="utf-8") as file:
+                json.dump(objects, file)
+                file.close()
+                print(storage.all().keys())
+            
         except NameError:
             print("** class doesn't exist **")
             
