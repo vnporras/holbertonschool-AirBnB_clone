@@ -9,7 +9,8 @@ import json
 from models.base_model import BaseModel
 from models import storage
 from datetime import datetime
-""" from models.user import User
+from models.user import User
+""" 
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
@@ -167,7 +168,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
     
     def do_quit(self, arg):
-        """Quit command to exit the program\n"""
+        """Quit command to exit the program"""
         sys.exit()
 
     def do_EOF(self, arg):
@@ -175,6 +176,7 @@ class HBNBCommand(cmd.Cmd):
         sys.exit()
 
     def emptyline(self):
+        """Called when an empty line is entered in response to the prompt."""
         pass
 
 
