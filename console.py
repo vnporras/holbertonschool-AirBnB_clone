@@ -96,10 +96,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of all instances based or not on the class name"""
-        if not arg:
-            print("** class name missing **")
-            return
-
+       
         try:
             class_name = arg
             eval(class_name)
@@ -117,6 +114,8 @@ class HBNBCommand(cmd.Cmd):
         try:
             # params = [clase name, instance id, attribute name, attribute value]
             params = arg.split()
+            eval(params[0])
+            
             if len(params) < 2:
                 print("** instance id missing **")
                 return
