@@ -83,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
                     json.dump(objects, file)
                     file.close()
             except FileNotFoundError:
-                print("** class doesn't exist **")
+                print("** no instance found **")
         except NameError:
             print("** class doesn't exist **")
             
