@@ -88,7 +88,6 @@ class HBNBCommand(cmd.Cmd):
             with open(self.__file_path, "w", encoding="utf-8") as file:
                 json.dump(objects, file)
                 file.close()
-                print(storage.all().keys())
             
         except NameError:
             print("** class doesn't exist **")
